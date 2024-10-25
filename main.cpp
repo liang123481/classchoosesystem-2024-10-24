@@ -57,11 +57,11 @@ public:
 };
 class Course {
 private:
-    int credit;//Ñ§·Ö
-    string courseName;//¿Î³ÌÃû³Æ
-    int enrolledStudents;//Ñ§Éú¸öÊı
-    string teacher;//ÀÏÊ¦
-    double averageGrade;//¾ù·Ö
+    int credit;//å­¦åˆ†
+    string courseName;//è¯¾ç¨‹åç§°
+    int enrolledStudents;//å­¦ç”Ÿä¸ªæ•°
+    string teacher;//è€å¸ˆ
+    double averageGrade;//å‡åˆ†
 public:
     friend void chooseclass:: averinfo(string name);
     friend void chooseclass:: addclass(string name);
@@ -74,7 +74,7 @@ public:
     }
 };
 void chooseclass::print(int i){
-        cout << "¿Î³ÌÃû³Æ: " << classlist[i].courseName << " Ñ§·ÖÎª£º"<< classlist[i].credit<< " ÊÚ¿Î½ÌÊ¦£º" << classlist[i].teacher << endl;
+        cout << "è¯¾ç¨‹åç§°: " << classlist[i].courseName << " å­¦åˆ†ä¸ºï¼š"<< classlist[i].credit<< " æˆè¯¾æ•™å¸ˆï¼š" << classlist[i].teacher << endl;
 }
 void chooseclass::averinfo(string classname) {
     bool temp=false;
@@ -98,35 +98,35 @@ void chooseclass::averinfo(string classname) {
 void chooseclass::addclass(string classname) {
     for (int i = 0; i < classlist.size(); i++) {
         if (classlist[i].courseName == classname) {
-            cout << "¿Î³ÌĞÅÏ¢ÒÑ´æÔÚ" << endl;
+            cout << "è¯¾ç¨‹ä¿¡æ¯å·²å­˜åœ¨" << endl;
             return;
         }
     }
     Course temp;
     temp.courseName = classname;
-    cout << "ÇëÊäÈëÑ§·ÖĞÅÏ¢:";
+    cout << "è¯·è¾“å…¥å­¦åˆ†ä¿¡æ¯:";
     cin >> temp.credit;
-    cout << "ÇëÊäÈë×î´óÈËÊıĞÅÏ¢:";
+    cout << "è¯·è¾“å…¥æœ€å¤§äººæ•°ä¿¡æ¯:";
     cin >> temp.enrolledStudents;
-    cout << "ÇëÊäÈëÊÚ¿Î½ÌÊ¦:";
+    cout << "è¯·è¾“å…¥æˆè¯¾æ•™å¸ˆ:";
     cin >> temp.teacher;
     classlist.push_back(temp);
-    cout << "Ìí¼Ó³É¹¦" << endl;
+    cout << "æ·»åŠ æˆåŠŸ" << endl;
     classnum++;
 }
 void chooseclass::addstu() {
-    cout << "ÇëÊäÈëÒªÌí¼ÓÑ§ÉúµÄ»ù±¾ĞÅÏ¢:";
+    cout << "è¯·è¾“å…¥è¦æ·»åŠ å­¦ç”Ÿçš„åŸºæœ¬ä¿¡æ¯:";
     string name;
-    cout << "ÇëÊäÈëÑ§ÉúĞÕÃû:";
+    cout << "è¯·è¾“å…¥å­¦ç”Ÿå§“å:";
     cin >> name;
     string gender;
-    cout << "ÇëÊäÈëÑ§ÉúĞÔ±ğ:";
+    cout << "è¯·è¾“å…¥å­¦ç”Ÿæ€§åˆ«:";
     cin >> gender;
     int studentID;
-    cout << "ÇëÊäÈëÑ§ÉúÑ§ºÅ:";
+    cout << "è¯·è¾“å…¥å­¦ç”Ÿå­¦å·:";
     cin >> studentID;
     string major;
-    cout << "ÇëÊäÈëÑ§Éú×¨Òµ:";
+    cout << "è¯·è¾“å…¥å­¦ç”Ÿä¸“ä¸š:";
     cin >> major;
     student stu1(name, gender, studentID, major);
     stulist.push_back(stu1);
@@ -138,25 +138,25 @@ void chooseclass::delclass(string classname) {
 
     if (it != classlist.end()) {
         classlist.erase(it);
-        cout << "¿Î³ÌÒÑÉ¾³ı" << endl;
+        cout << "è¯¾ç¨‹å·²åˆ é™¤" << endl;
         classnum--;
     }
     else {
-        cout << "Î´ÕÒµ½Ö¸¶¨¿Î³Ì" << endl;
+        cout << "æœªæ‰¾åˆ°æŒ‡å®šè¯¾ç¨‹" << endl;
     }
 }
 void chooseclass::stuaddclass(string classname,int ID) {
     int flag = 0;
     for (int i = 0; i < classlist.size(); i++) {
         if (classlist[i].courseName == classname) {
-            cout << "ÄúÒªÌí¼ÓµÄ¿Î³ÌĞÅÏ¢Îª£º" << endl;
+            cout << "æ‚¨è¦æ·»åŠ çš„è¯¾ç¨‹ä¿¡æ¯ä¸ºï¼š" << endl;
             print(i);
             flag = 1;
             break;
         }
     }
     if (!flag) {
-        cout << "Ã»ÓĞ¸Ã¿Î³Ì" << endl;
+        cout << "æ²¡æœ‰è¯¥è¯¾ç¨‹" << endl;
         return;
     }
     int temp=0;
@@ -164,12 +164,12 @@ void chooseclass::stuaddclass(string classname,int ID) {
         if (stulist[i].studentID == ID) {
             temp = 1;
             if (stulist[i].course_score.count(classname)) {
-                cout << "ÄúÒÑ¾­Ñ¡Ôñ¸Ã¿Î³Ì"<<endl;
+                cout << "æ‚¨å·²ç»é€‰æ‹©è¯¥è¯¾ç¨‹"<<endl;
                 break;
             }
             else {
                 temp = 1;
-                cout << "¿Î³ÌÌí¼Ó³É¹¦" << endl;
+                cout << "è¯¾ç¨‹æ·»åŠ æˆåŠŸ" << endl;
                 stulist[i].course_score[classname];
                 stulist[i].coursenum++;
             }
@@ -178,10 +178,10 @@ void chooseclass::stuaddclass(string classname,int ID) {
 }
 void chooseclass::studelclass() {
     int id = 0;
-    cout << "ÇëÊäÈëÑ§ºÅ£º";
+    cout << "è¯·è¾“å…¥å­¦å·ï¼š";
     cin >> id;
     int temp = 0;
-    cout << "ÇëÊäÈëÏëÒªÉ¾³ıµÄ¿ÆÄ¿";
+    cout << "è¯·è¾“å…¥æƒ³è¦åˆ é™¤çš„ç§‘ç›®";
     string classname;
     for (int i = 0; i < stulist.size(); i++) {
         if (stulist[i].studentID == id) {
@@ -189,37 +189,37 @@ void chooseclass::studelclass() {
             if (stulist[i].course_score.count(classname)) {
                 stulist[i].course_score.erase(classname);
                 stulist[i].coursenum--;
-                cout << "¿Î³ÌÉ¾³ı³É¹¦";
+                cout << "è¯¾ç¨‹åˆ é™¤æˆåŠŸ"<<endl;
             }
             else {
-                cout << "ÄúÃ»ÓĞÑ¡Ôñ¸Ã¿Î³Ì";
+                cout << "æ‚¨æ²¡æœ‰é€‰æ‹©è¯¥è¯¾ç¨‹"<<endl;
             }
         }
     }
     if (!temp) {
-        cout << "²éÎŞ´ËÈËĞÅÏ¢";
+        cout << "æŸ¥æ— æ­¤äººä¿¡æ¯"<<endl;
     }
 }
 void chooseclass::addscore(int id) {
     for (int i = 0; i < stulist.size(); i++) {
         if (stulist[i].studentID == id) {
             string classname;
-            cout << "ÇëÊäÈëÒªÌí¼Ó³É¼¨µÄ¿ÆÄ¿£º";
+            cout << "è¯·è¾“å…¥è¦æ·»åŠ æˆç»©çš„ç§‘ç›®ï¼š";
             cin >> classname;
             if (stulist[i].course_score.count(classname)) {
-                cout << "ÇëÊäÈë·ÖÊı£º";
+                cout << "è¯·è¾“å…¥åˆ†æ•°ï¼š";
                 int temp=0;
                 cin >> temp;
                 stulist[i].course_score[classname] = temp;
                 return;
             }
             else {
-                cout << "²»´æÔÚ¸Ã¿ÆÄ¿" << endl;
+                cout << "ä¸å­˜åœ¨è¯¥ç§‘ç›®" << endl;
                 return;
             }
         }
     }
-    cout << "Ã»ÓĞ¸ÃÑ§ÉúĞÅÏ¢" << endl;
+    cout << "æ²¡æœ‰è¯¥å­¦ç”Ÿä¿¡æ¯" << endl;
 }
 bool compareStudents(const student& a, const student& b) {
     return a.averageGrade > b.averageGrade; 
@@ -242,32 +242,32 @@ int chooseclass::checkrank(int id) {
 void chooseclass::stuprintclass(int id) {
     for (int i = 0; i < stulist.size(); i++) {
         if (stulist[i].studentID == id) {
-            cout << "ËùÑ¡¿ÆÄ¿Îª£º";
+            cout << "æ‰€é€‰ç§‘ç›®ä¸ºï¼š"<<endl;
             for (auto it = stulist[i].course_score.begin(); it != stulist[i].course_score.end(); it++) {
                 cout << it->first << " ";
             }
             return;
         }
     }
-    cout << "²éÎŞ´ËÈË"<<endl;
+    cout << "æŸ¥æ— æ­¤äºº"<<endl;
 }
 int main() {
     chooseclass operation;
     int temp = 0;
     while (temp!=9) {
-        cout << "»¶Ó­À´µ½¿Î³ÌÑ¡ÔñÏµÍ³£º" << endl;
-        cout << "ÇëÊäÈëÏàÓ¦²Ù×÷£º" << endl << "1.Ìí¼Ó¿ÆÄ¿" << "2.É¾³ı¿ÆÄ¿" << "3.Ìí¼ÓÑ§ÉúĞÅÏ¢" << "4.Ñ§ÉúÑ¡¿Î" << "5.Ñ§Éú·ÖÊıÂ¼Èë" << "6.Ñ§ÉúÅÅÃû²éÑ¯" << "7.ÏÔÊ¾ÒÑÓĞ¿ÆÄ¿ĞÅÏ¢" << "8.Ñ§ÉúÒÑÑ¡¿ÆÄ¿²éÑ¯"<<"9.ÍË³ö" << endl;
+        cout << "æ¬¢è¿æ¥åˆ°è¯¾ç¨‹é€‰æ‹©ç³»ç»Ÿï¼š" << endl;
+        cout << "è¯·è¾“å…¥ç›¸åº”æ“ä½œï¼š" << endl << "1.æ·»åŠ ç§‘ç›®" << "2.åˆ é™¤ç§‘ç›®" << "3.æ·»åŠ å­¦ç”Ÿä¿¡æ¯" << "4.å­¦ç”Ÿé€‰è¯¾" << "5.å­¦ç”Ÿåˆ†æ•°å½•å…¥" << "6.å­¦ç”Ÿæ’åæŸ¥è¯¢" << "7.æ˜¾ç¤ºå·²æœ‰ç§‘ç›®ä¿¡æ¯" << "8.å­¦ç”Ÿå·²é€‰ç§‘ç›®æŸ¥è¯¢"<<"9.é€€å‡º" << endl;
         cin >> temp;
         if (temp == 1) {
             system("cls");
-            cout << "ÇëÊäÈëÏëÒªÌí¼ÓµÄ¿ÆÄ¿:";
+            cout << "è¯·è¾“å…¥æƒ³è¦æ·»åŠ çš„ç§‘ç›®:";
             string temp1;
             cin >> temp1;
             operation.addclass(temp1);
         }
         else if (temp == 2) {
             system("cls");
-            cout << "ÇëÊäÈëÏëÒªÉ¾³ıµÄ¿ÆÄ¿";
+            cout << "è¯·è¾“å…¥æƒ³è¦åˆ é™¤çš„ç§‘ç›®";
             string temp1;
             cin >> temp1;
             operation.delclass(temp1);
@@ -278,17 +278,17 @@ int main() {
         }
         else if (temp == 4) {
             system("cls");
-            cout << "ÇëÊäÈëÑ§ºÅ:";
+            cout << "è¯·è¾“å…¥å­¦å·:";
             int id;
             cin >> id;
-            cout << "ÇëÊäÈëÌí¼Ó¿ÆÄ¿:";
+            cout << "è¯·è¾“å…¥æ·»åŠ ç§‘ç›®:";
             string Class;
             cin >> Class;
             operation.stuaddclass(Class, id);
         }
         else if (temp == 5) {
             system("cls");
-            cout << "ÇëÊäÈëÑ§ºÅ:";
+            cout << "è¯·è¾“å…¥å­¦å·:";
             int id;
             cin >> id;
             operation.addscore(id);
@@ -296,21 +296,21 @@ int main() {
         else if (temp == 6) {
             system("cls");
             operation.cal_rank();
-            cout << "ÇëÊäÈëÑ§ºÅ:";
+            cout << "è¯·è¾“å…¥å­¦å·:";
             int id;
             cin >> id;
             int rank=operation.checkrank(id);
             if (rank) {
-                cout <<"ÅÅÃûÎª" << rank;
+                cout <<"æ’åä¸º" << rank<<endl;
             }
             else {
-                cout << "²éÎŞ´ËÈË";
+                cout << "æŸ¥æ— æ­¤äºº"<<endl;
             }
         }
         else if (temp == 7) {
             system("cls");
             if (operation.classnum == 0) {
-                cout << "Ã»ÓĞÌí¼Ó¿Î³Ì" << endl;
+                cout << "æ²¡æœ‰æ·»åŠ è¯¾ç¨‹" << endl;
                 continue;
             }
             for (int i = 0; i < operation.classnum; i++) {
@@ -320,9 +320,12 @@ int main() {
         else if (temp == 8) {
             system("cls");
             int id = 0;
-            cout << "ÇëÊäÈëÑ§ºÅ£º";
+            cout << "è¯·è¾“å…¥å­¦å·ï¼š";
             cin >> id;
             operation.stuprintclass(id);
+        }
+        else {
+            cout << "è¯·é‡æ–°è¾“å…¥"<<endl;
         }
     }
 }
